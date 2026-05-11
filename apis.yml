@@ -1,0 +1,61 @@
+aid: tailscale
+name: Tailscale
+description: >-
+  Tailscale is a zero-config mesh VPN built on WireGuard that creates secure
+  private networks between devices, users, and services with identity-based
+  access controls, Access Control Lists (ACLs), DNS, and device sharing.
+  Tailscale eliminates traditional VPN complexity with peer-to-peer connectivity
+  and SSO-based authentication. The Tailscale REST API provides programmatic
+  control over tailnets, devices, users, ACLs, and keys using API tokens or
+  OAuth client credentials.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - VPN
+  - Mesh Networking
+  - WireGuard
+  - Zero Trust
+  - Networking
+  - Identity
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/tailscale/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: tailscale:rest-api
+    name: Tailscale REST API
+    description: >-
+      REST API for managing tailnets, devices, users, ACL policies, DNS,
+      keys, and posture in Tailscale. Supports HTTP Basic Auth with the
+      API token as username, Bearer token in the Authorization header, and
+      OAuth client credentials with scoped access.
+    humanURL: https://tailscale.com/api
+    baseURL: https://api.tailscale.com/api/v2
+    tags:
+      - Tailnets
+      - Devices
+      - Users
+      - ACLs
+      - DNS
+      - Keys
+    properties:
+      - type: Documentation
+        url: https://tailscale.com/api
+      - type: OpenAPI
+        url: https://api.tailscale.com/api/v2
+
+common:
+  - type: Website
+    url: https://tailscale.com
+  - type: Documentation
+    url: https://tailscale.com/kb/
+  - type: Pricing
+    url: https://tailscale.com/pricing
+  - type: Sign Up
+    url: https://login.tailscale.com/start
+  - type: GitHub
+    url: https://github.com/tailscale/tailscale
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
