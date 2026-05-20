@@ -46,6 +46,8 @@ apis:
         url: https://api.tailscale.com/api/v2
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/tailscale
   - type: Website
     url: https://tailscale.com
   - type: Documentation
