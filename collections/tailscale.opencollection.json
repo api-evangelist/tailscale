@@ -1,0 +1,915 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tailscale REST API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tailnet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices in a tailnet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/devices",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List devices in a tailnet"
+        },
+        {
+          "info": {
+            "name": "List device attributes for a tailnet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/device-attributes",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List device attributes for a tailnet"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a device"
+        },
+        {
+          "info": {
+            "name": "Delete a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a device"
+        },
+        {
+          "info": {
+            "name": "Expire a device's key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/expire",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Expire a device's key"
+        },
+        {
+          "info": {
+            "name": "Get device routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/routes",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get device routes"
+        },
+        {
+          "info": {
+            "name": "Set device routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/routes",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device routes"
+        },
+        {
+          "info": {
+            "name": "Authorize a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/authorized",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Authorize a device"
+        },
+        {
+          "info": {
+            "name": "Set device name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/name",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device name"
+        },
+        {
+          "info": {
+            "name": "Set device tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/tags",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device tags"
+        },
+        {
+          "info": {
+            "name": "Update device key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/key",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update device key"
+        },
+        {
+          "info": {
+            "name": "Set device IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/ip",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device IP"
+        },
+        {
+          "info": {
+            "name": "Get device attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/attributes",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get device attributes"
+        },
+        {
+          "info": {
+            "name": "Set a device attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/attributes/:attributeKey",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attributeKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set a device attribute"
+        },
+        {
+          "info": {
+            "name": "Delete a device attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/attributes/:attributeKey",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attributeKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a device attribute"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List device invites for a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/device-invites",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List device invites for a device"
+        },
+        {
+          "info": {
+            "name": "Create device invite for a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/device-invites",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create device invite for a device"
+        },
+        {
+          "info": {
+            "name": "List tailnet user invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/user-invites",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List tailnet user invites"
+        },
+        {
+          "info": {
+            "name": "Create user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/user-invites",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create user invite"
+        },
+        {
+          "info": {
+            "name": "Get user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/user-invites/:userInviteId",
+            "params": [
+              {
+                "name": "userInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user invite"
+        },
+        {
+          "info": {
+            "name": "Delete user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/user-invites/:userInviteId",
+            "params": [
+              {
+                "name": "userInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete user invite"
+        },
+        {
+          "info": {
+            "name": "Resend user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/user-invites/:userInviteId/resend",
+            "params": [
+              {
+                "name": "userInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resend user invite"
+        },
+        {
+          "info": {
+            "name": "Get device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device-invites/:deviceInviteId",
+            "params": [
+              {
+                "name": "deviceInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get device invite"
+        },
+        {
+          "info": {
+            "name": "Delete device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/device-invites/:deviceInviteId",
+            "params": [
+              {
+                "name": "deviceInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete device invite"
+        },
+        {
+          "info": {
+            "name": "Resend device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device-invites/:deviceInviteId/resend",
+            "params": [
+              {
+                "name": "deviceInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resend device invite"
+        },
+        {
+          "info": {
+            "name": "Accept a device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device-invites/-/accept"
+          },
+          "docs": "Accept a device invite"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get configuration audit log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/configuration",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get configuration audit log"
+        },
+        {
+          "info": {
+            "name": "Get network flow logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/network",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get network flow logs"
+        },
+        {
+          "info": {
+            "name": "Get log stream configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get log stream configuration"
+        },
+        {
+          "info": {
+            "name": "Set log stream configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set log stream configuration"
+        },
+        {
+          "info": {
+            "name": "Delete log stream configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete log stream configuration"
+        },
+        {
+          "info": {
+            "name": "Get log stream status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream/status",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get log stream status"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DNS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get DNS nameservers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/nameservers",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DNS nameservers"
+        },
+        {
+          "info": {
+            "name": "Set DNS nameservers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/nameservers",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set DNS nameservers"
+        },
+        {
+          "info": {
+            "name": "Get DNS preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/preferences",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DNS preferences"
+        },
+        {
+          "info": {
+            "name": "Set DNS preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/preferences",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set DNS preferences"
+        },
+        {
+          "info": {
+            "name": "Get DNS search paths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/searchpaths",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DNS search paths"
+        },
+        {
+          "info": {
+            "name": "Set DNS search paths",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/searchpaths",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set DNS search paths"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ACL policy file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/acl",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get ACL policy file"
+        },
+        {
+          "info": {
+            "name": "Set ACL policy file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/acl",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set ACL policy file"
+        },
+        {
+          "info": {
+            "name": "Validate ACL policy file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/acl/validate",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Validate ACL policy file"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/keys",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List keys"
+        },
+        {
+          "info": {
+            "name": "Create key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/keys",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create key"
+        },
+        {
+          "info": {
+            "name": "Get key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/keys/:keyId",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get key"
+        },
+        {
+          "info": {
+            "name": "Delete key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/keys/:keyId",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "keyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
