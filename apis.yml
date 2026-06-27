@@ -54,7 +54,7 @@ common:
     url: https://tailscale.com/kb/
   - type: Pricing
     url: https://tailscale.com/pricing
-  - type: SignUp
+  - type: Signup
     url: https://login.tailscale.com/start
   - type: GitHub
     url: https://github.com/tailscale/tailscale
