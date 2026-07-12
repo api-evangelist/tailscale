@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tailscale-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: Tailscale API access token (prefixed "tskey-api-") passed in the Authorization
+    header. Tokens are created in the admin console with 1-90 day expiry, or via OAuth client
+    credentials with scopes.
+  sources:
+  - openapi/tailscale-openapi.yml
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Auth with the access token as the username and an empty password.
+  sources:
+  - openapi/tailscale-openapi.yml

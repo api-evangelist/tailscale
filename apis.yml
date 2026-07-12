@@ -46,6 +46,14 @@ apis:
         url: https://api.tailscale.com/api/v2
 
 common:
+  - type: TrustCenter
+    url: security/tailscale-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/tailscale-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/tailscale-domain-security.yml
+  - type: Authentication
+    url: authentication/tailscale-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/tailscale
   - type: Website
@@ -58,6 +66,8 @@ common:
     url: https://login.tailscale.com/start
   - type: GitHub
     url: https://github.com/tailscale/tailscale
+  - url: https://tailscale.com/blog/index.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
