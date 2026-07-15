@@ -46,6 +46,8 @@ apis:
         url: https://api.tailscale.com/api/v2
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/tailscale-agentic-access.yml
   - type: TrustCenter
     url: security/tailscale-trust-center.yml
   - type: VulnerabilityDisclosure
