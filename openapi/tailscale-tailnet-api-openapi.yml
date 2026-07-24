@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Tailscale REST Devices Tailnet API
+  description: 'REST API for managing Tailscale tailnets, devices, users, ACL policy, DNS, keys, logging, and user/device invites. Authenticated via HTTP Basic Auth with the API token as the username, Bearer token, or OAuth client credentials with scoped access. Source: https://api.tailscale.com/api/v2 (OpenAPI), https://tailscale.com/api'
+  version: '2'
+  contact:
+    name: Tailscale
+    url: https://tailscale.com/api
+servers:
+- url: https://api.tailscale.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+- BasicAuth: []
+tags:
+- name: Tailnet
+paths:
+  /tailnet/{tailnet}/devices:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Tailnet
+      summary: List devices in a tailnet
+      operationId: listTailnetDevices
+      responses:
+        '200':
+          description: OK
+  /tailnet/{tailnet}/device-attributes:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Tailnet
+      summary: List device attributes for a tailnet
+      operationId: listTailnetDeviceAttributes
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Tailscale API access token (prefixed "tskey-api-") passed in the Authorization header. Tokens are created in the admin console with 1-90 day expiry, or via OAuth client credentials with scopes.
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth with the access token as the username and an empty password.

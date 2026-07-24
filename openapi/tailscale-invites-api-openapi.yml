@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  title: Tailscale REST Devices Invites API
+  description: 'REST API for managing Tailscale tailnets, devices, users, ACL policy, DNS, keys, logging, and user/device invites. Authenticated via HTTP Basic Auth with the API token as the username, Bearer token, or OAuth client credentials with scoped access. Source: https://api.tailscale.com/api/v2 (OpenAPI), https://tailscale.com/api'
+  version: '2'
+  contact:
+    name: Tailscale
+    url: https://tailscale.com/api
+servers:
+- url: https://api.tailscale.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+- BasicAuth: []
+tags:
+- name: Invites
+paths:
+  /device/{deviceId}/device-invites:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Invites
+      summary: List device invites for a device
+      operationId: listDeviceInvitesForDevice
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Invites
+      summary: Create device invite for a device
+      operationId: createDeviceInvite
+      responses:
+        '201':
+          description: Created
+  /tailnet/{tailnet}/user-invites:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Invites
+      summary: List tailnet user invites
+      operationId: listUserInvites
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Invites
+      summary: Create user invite
+      operationId: createUserInvite
+      responses:
+        '201':
+          description: Created
+  /user-invites/{userInviteId}:
+    parameters:
+    - name: userInviteId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Invites
+      summary: Get user invite
+      operationId: getUserInvite
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Invites
+      summary: Delete user invite
+      operationId: deleteUserInvite
+      responses:
+        '204':
+          description: Deleted
+  /user-invites/{userInviteId}/resend:
+    parameters:
+    - name: userInviteId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Invites
+      summary: Resend user invite
+      operationId: resendUserInvite
+      responses:
+        '200':
+          description: OK
+  /device-invites/{deviceInviteId}:
+    parameters:
+    - name: deviceInviteId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Invites
+      summary: Get device invite
+      operationId: getDeviceInvite
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Invites
+      summary: Delete device invite
+      operationId: deleteDeviceInvite
+      responses:
+        '204':
+          description: Deleted
+  /device-invites/{deviceInviteId}/resend:
+    parameters:
+    - name: deviceInviteId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Invites
+      summary: Resend device invite
+      operationId: resendDeviceInvite
+      responses:
+        '200':
+          description: OK
+  /device-invites/-/accept:
+    post:
+      tags:
+      - Invites
+      summary: Accept a device invite
+      operationId: acceptDeviceInvite
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Tailscale API access token (prefixed "tskey-api-") passed in the Authorization header. Tokens are created in the admin console with 1-90 day expiry, or via OAuth client credentials with scopes.
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth with the access token as the username and an empty password.

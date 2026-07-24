@@ -1,0 +1,113 @@
+openapi: 3.1.0
+info:
+  title: Tailscale REST Devices Logging API
+  description: 'REST API for managing Tailscale tailnets, devices, users, ACL policy, DNS, keys, logging, and user/device invites. Authenticated via HTTP Basic Auth with the API token as the username, Bearer token, or OAuth client credentials with scoped access. Source: https://api.tailscale.com/api/v2 (OpenAPI), https://tailscale.com/api'
+  version: '2'
+  contact:
+    name: Tailscale
+    url: https://tailscale.com/api
+servers:
+- url: https://api.tailscale.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+- BasicAuth: []
+tags:
+- name: Logging
+paths:
+  /tailnet/{tailnet}/logging/configuration:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Logging
+      summary: Get configuration audit log
+      operationId: getConfigurationLog
+      responses:
+        '200':
+          description: OK
+  /tailnet/{tailnet}/logging/network:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Logging
+      summary: Get network flow logs
+      operationId: getNetworkLog
+      responses:
+        '200':
+          description: OK
+  /tailnet/{tailnet}/logging/{logType}/stream:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: logType
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Logging
+      summary: Get log stream configuration
+      operationId: getLogStream
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Logging
+      summary: Set log stream configuration
+      operationId: setLogStream
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Logging
+      summary: Delete log stream configuration
+      operationId: deleteLogStream
+      responses:
+        '204':
+          description: Deleted
+  /tailnet/{tailnet}/logging/{logType}/stream/status:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: logType
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Logging
+      summary: Get log stream status
+      operationId: getLogStreamStatus
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Tailscale API access token (prefixed "tskey-api-") passed in the Authorization header. Tokens are created in the admin console with 1-90 day expiry, or via OAuth client credentials with scopes.
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth with the access token as the username and an empty password.

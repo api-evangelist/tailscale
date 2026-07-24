@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: Tailscale REST Devices API
+  description: 'REST API for managing Tailscale tailnets, devices, users, ACL policy, DNS, keys, logging, and user/device invites. Authenticated via HTTP Basic Auth with the API token as the username, Bearer token, or OAuth client credentials with scoped access. Source: https://api.tailscale.com/api/v2 (OpenAPI), https://tailscale.com/api'
+  version: '2'
+  contact:
+    name: Tailscale
+    url: https://tailscale.com/api
+servers:
+- url: https://api.tailscale.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+- BasicAuth: []
+tags:
+- name: Devices
+paths:
+  /tailnet/{tailnet}/devices:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Devices
+      summary: List devices in a tailnet
+      operationId: listTailnetDevices
+      responses:
+        '200':
+          description: OK
+  /tailnet/{tailnet}/device-attributes:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Devices
+      summary: List device attributes for a tailnet
+      operationId: listTailnetDeviceAttributes
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Devices
+      summary: Get a device
+      operationId: getDevice
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Devices
+      summary: Delete a device
+      operationId: deleteDevice
+      responses:
+        '204':
+          description: Deleted
+  /device/{deviceId}/expire:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Devices
+      summary: Expire a device's key
+      operationId: expireDevice
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/routes:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Devices
+      summary: Get device routes
+      operationId: getDeviceRoutes
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Devices
+      summary: Set device routes
+      operationId: setDeviceRoutes
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/authorized:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Devices
+      summary: Authorize a device
+      operationId: authorizeDevice
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/name:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Devices
+      summary: Set device name
+      operationId: setDeviceName
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/tags:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Devices
+      summary: Set device tags
+      operationId: setDeviceTags
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/key:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Devices
+      summary: Update device key
+      operationId: setDeviceKey
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/ip:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Devices
+      summary: Set device IP
+      operationId: setDeviceIp
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/attributes:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Devices
+      summary: Get device attributes
+      operationId: getDeviceAttributes
+      responses:
+        '200':
+          description: OK
+  /device/{deviceId}/attributes/{attributeKey}:
+    parameters:
+    - name: deviceId
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: attributeKey
+      in: path
+      required: true
+      schema:
+        type: string
+    post:
+      tags:
+      - Devices
+      summary: Set a device attribute
+      operationId: setDeviceAttribute
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Devices
+      summary: Delete a device attribute
+      operationId: deleteDeviceAttribute
+      responses:
+        '204':
+          description: Deleted
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Tailscale API access token (prefixed "tskey-api-") passed in the Authorization header. Tokens are created in the admin console with 1-90 day expiry, or via OAuth client credentials with scopes.
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth with the access token as the username and an empty password.

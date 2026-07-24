@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: Tailscale REST Devices Keys API
+  description: 'REST API for managing Tailscale tailnets, devices, users, ACL policy, DNS, keys, logging, and user/device invites. Authenticated via HTTP Basic Auth with the API token as the username, Bearer token, or OAuth client credentials with scoped access. Source: https://api.tailscale.com/api/v2 (OpenAPI), https://tailscale.com/api'
+  version: '2'
+  contact:
+    name: Tailscale
+    url: https://tailscale.com/api
+servers:
+- url: https://api.tailscale.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+- BasicAuth: []
+tags:
+- name: Keys
+paths:
+  /tailnet/{tailnet}/keys:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Keys
+      summary: List keys
+      operationId: listKeys
+      responses:
+        '200':
+          description: OK
+    post:
+      tags:
+      - Keys
+      summary: Create key
+      operationId: createKey
+      responses:
+        '201':
+          description: Created
+  /tailnet/{tailnet}/keys/{keyId}:
+    parameters:
+    - name: tailnet
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: keyId
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Keys
+      summary: Get key
+      operationId: getKey
+      responses:
+        '200':
+          description: OK
+    delete:
+      tags:
+      - Keys
+      summary: Delete key
+      operationId: deleteKey
+      responses:
+        '204':
+          description: Deleted
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Tailscale API access token (prefixed "tskey-api-") passed in the Authorization header. Tokens are created in the admin console with 1-90 day expiry, or via OAuth client credentials with scopes.
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth with the access token as the username and an empty password.
