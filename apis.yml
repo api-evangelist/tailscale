@@ -9,7 +9,19 @@ description: >-
   control over tailnets, devices, users, ACLs, and keys using API tokens or
   OAuth client credentials.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tailscale.png
 tags:
   - VPN
   - Mesh Networking
@@ -23,28 +35,90 @@ created: '2026-05-11'
 modified: '2026-05-11'
 specificationVersion: '0.19'
 apis:
-  - aid: tailscale:rest-api
-    name: Tailscale REST API
-    description: >-
-      REST API for managing tailnets, devices, users, ACL policies, DNS,
-      keys, and posture in Tailscale. Supports HTTP Basic Auth with the
-      API token as username, Bearer token in the Authorization header, and
-      OAuth client credentials with scoped access.
-    humanURL: https://tailscale.com/api
-    baseURL: https://api.tailscale.com/api/v2
-    tags:
-      - Tailnets
-      - Devices
-      - Users
-      - ACLs
-      - DNS
-      - Keys
-    properties:
-      - type: Documentation
-        url: https://tailscale.com/api
-      - type: OpenAPI
-        url: https://api.tailscale.com/api/v2
-
+- aid: tailscale:tailscale-devices-api
+  name: Tailscale Devices API
+  description: The Devices API from Tailscale — 12 operation(s) for devices.
+  humanURL: https://tailscale.com/api
+  baseURL: https://api.tailscale.com/api/v2
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/tailscale-devices-api-openapi.yml
+  - type: Documentation
+    url: https://tailscale.com/api
+- aid: tailscale:tailscale-dns-api
+  name: Tailscale DNS API
+  description: The DNS API from Tailscale — 3 operation(s) for dns.
+  humanURL: https://tailscale.com/api
+  baseURL: https://api.tailscale.com/api/v2
+  tags:
+  - DNS
+  properties:
+  - type: OpenAPI
+    url: openapi/tailscale-dns-api-openapi.yml
+  - type: Documentation
+    url: https://tailscale.com/api
+- aid: tailscale:tailscale-invites-api
+  name: Tailscale Invites API
+  description: The Invites API from Tailscale — 7 operation(s) for invites.
+  humanURL: https://tailscale.com/api
+  baseURL: https://api.tailscale.com/api/v2
+  tags:
+  - Invites
+  properties:
+  - type: OpenAPI
+    url: openapi/tailscale-invites-api-openapi.yml
+  - type: Documentation
+    url: https://tailscale.com/api
+- aid: tailscale:tailscale-keys-api
+  name: Tailscale Keys API
+  description: The Keys API from Tailscale — 2 operation(s) for keys.
+  humanURL: https://tailscale.com/api
+  baseURL: https://api.tailscale.com/api/v2
+  tags:
+  - Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/tailscale-keys-api-openapi.yml
+  - type: Documentation
+    url: https://tailscale.com/api
+- aid: tailscale:tailscale-logging-api
+  name: Tailscale Logging API
+  description: The Logging API from Tailscale — 4 operation(s) for logging.
+  humanURL: https://tailscale.com/api
+  baseURL: https://api.tailscale.com/api/v2
+  tags:
+  - Logging
+  properties:
+  - type: OpenAPI
+    url: openapi/tailscale-logging-api-openapi.yml
+  - type: Documentation
+    url: https://tailscale.com/api
+- aid: tailscale:tailscale-policy-api
+  name: Tailscale Policy API
+  description: The Policy API from Tailscale — 2 operation(s) for policy.
+  humanURL: https://tailscale.com/api
+  baseURL: https://api.tailscale.com/api/v2
+  tags:
+  - Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/tailscale-policy-api-openapi.yml
+  - type: Documentation
+    url: https://tailscale.com/api
+- aid: tailscale:tailscale-tailnet-api
+  name: Tailscale Tailnet API
+  description: The Tailnet API from Tailscale — 2 operation(s) for tailnet.
+  humanURL: https://tailscale.com/api
+  baseURL: https://api.tailscale.com/api/v2
+  tags:
+  - Tailnet
+  properties:
+  - type: OpenAPI
+    url: openapi/tailscale-tailnet-api-openapi.yml
+  - type: Documentation
+    url: https://tailscale.com/api
 common:
   - type: AgenticAccess
     url: agentic-access/tailscale-agentic-access.yml
