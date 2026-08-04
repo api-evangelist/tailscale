@@ -1,0 +1,26 @@
+{
+  "provider": "tailscale",
+  "sources": [
+    "tailscale-devices-api-openapi.yml",
+    "tailscale-dns-api-openapi.yml",
+    "tailscale-invites-api-openapi.yml",
+    "tailscale-keys-api-openapi.yml",
+    "tailscale-logging-api-openapi.yml",
+    "tailscale-policy-api-openapi.yml",
+    "tailscale-tailnet-api-openapi.yml"
+  ],
+  "outputs": [
+    "tailscale-devices-api-openapi.yml",
+    "tailscale-dns-api-openapi.yml",
+    "tailscale-invites-api-openapi.yml",
+    "tailscale-keys-api-openapi.yml",
+    "tailscale-logging-api-openapi.yml",
+    "tailscale-policy-api-openapi.yml",
+    "tailscale-tailnet-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

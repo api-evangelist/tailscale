@@ -1,0 +1,582 @@
+openapi: 3.1.0
+info:
+  title: Tailscale REST API
+  description: >-
+    REST API for managing Tailscale tailnets, devices, users, ACL policy,
+    DNS, keys, logging, and user/device invites. Authenticated via HTTP
+    Basic Auth with the API token as the username, Bearer token, or OAuth
+    client credentials with scoped access. Source:
+    https://api.tailscale.com/api/v2 (OpenAPI), https://tailscale.com/api
+  version: "2"
+  contact:
+    name: Tailscale
+    url: https://tailscale.com/api
+servers:
+  - url: https://api.tailscale.com/api/v2
+    description: Production
+security:
+  - BearerAuth: []
+  - BasicAuth: []
+tags:
+  - name: Tailnet
+  - name: Devices
+  - name: Invites
+  - name: Logging
+  - name: DNS
+  - name: Policy
+  - name: Keys
+paths:
+  /tailnet/{tailnet}/devices:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Tailnet, Devices]
+      summary: List devices in a tailnet
+      operationId: listTailnetDevices
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/device-attributes:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Tailnet, Devices]
+      summary: List device attributes for a tailnet
+      operationId: listTailnetDeviceAttributes
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Devices]
+      summary: Get a device
+      operationId: getDevice
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags: [Devices]
+      summary: Delete a device
+      operationId: deleteDevice
+      responses:
+        "204":
+          description: Deleted
+  /device/{deviceId}/expire:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Devices]
+      summary: Expire a device's key
+      operationId: expireDevice
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/routes:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Devices]
+      summary: Get device routes
+      operationId: getDeviceRoutes
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [Devices]
+      summary: Set device routes
+      operationId: setDeviceRoutes
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/authorized:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Devices]
+      summary: Authorize a device
+      operationId: authorizeDevice
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/name:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Devices]
+      summary: Set device name
+      operationId: setDeviceName
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/tags:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Devices]
+      summary: Set device tags
+      operationId: setDeviceTags
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/key:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Devices]
+      summary: Update device key
+      operationId: setDeviceKey
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/ip:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Devices]
+      summary: Set device IP
+      operationId: setDeviceIp
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/attributes:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Devices]
+      summary: Get device attributes
+      operationId: getDeviceAttributes
+      responses:
+        "200":
+          description: OK
+  /device/{deviceId}/attributes/{attributeKey}:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: attributeKey
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Devices]
+      summary: Set a device attribute
+      operationId: setDeviceAttribute
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags: [Devices]
+      summary: Delete a device attribute
+      operationId: deleteDeviceAttribute
+      responses:
+        "204":
+          description: Deleted
+  /device/{deviceId}/device-invites:
+    parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Invites]
+      summary: List device invites for a device
+      operationId: listDeviceInvitesForDevice
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [Invites]
+      summary: Create device invite for a device
+      operationId: createDeviceInvite
+      responses:
+        "201":
+          description: Created
+  /tailnet/{tailnet}/user-invites:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Invites]
+      summary: List tailnet user invites
+      operationId: listUserInvites
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [Invites]
+      summary: Create user invite
+      operationId: createUserInvite
+      responses:
+        "201":
+          description: Created
+  /user-invites/{userInviteId}:
+    parameters:
+      - name: userInviteId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Invites]
+      summary: Get user invite
+      operationId: getUserInvite
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags: [Invites]
+      summary: Delete user invite
+      operationId: deleteUserInvite
+      responses:
+        "204":
+          description: Deleted
+  /user-invites/{userInviteId}/resend:
+    parameters:
+      - name: userInviteId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Invites]
+      summary: Resend user invite
+      operationId: resendUserInvite
+      responses:
+        "200":
+          description: OK
+  /device-invites/{deviceInviteId}:
+    parameters:
+      - name: deviceInviteId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Invites]
+      summary: Get device invite
+      operationId: getDeviceInvite
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags: [Invites]
+      summary: Delete device invite
+      operationId: deleteDeviceInvite
+      responses:
+        "204":
+          description: Deleted
+  /device-invites/{deviceInviteId}/resend:
+    parameters:
+      - name: deviceInviteId
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Invites]
+      summary: Resend device invite
+      operationId: resendDeviceInvite
+      responses:
+        "200":
+          description: OK
+  /device-invites/-/accept:
+    post:
+      tags: [Invites]
+      summary: Accept a device invite
+      operationId: acceptDeviceInvite
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/logging/configuration:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Logging]
+      summary: Get configuration audit log
+      operationId: getConfigurationLog
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/logging/network:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Logging]
+      summary: Get network flow logs
+      operationId: getNetworkLog
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/logging/{logType}/stream:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: logType
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Logging]
+      summary: Get log stream configuration
+      operationId: getLogStream
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [Logging]
+      summary: Set log stream configuration
+      operationId: setLogStream
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags: [Logging]
+      summary: Delete log stream configuration
+      operationId: deleteLogStream
+      responses:
+        "204":
+          description: Deleted
+  /tailnet/{tailnet}/logging/{logType}/stream/status:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: logType
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Logging]
+      summary: Get log stream status
+      operationId: getLogStreamStatus
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/dns/nameservers:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [DNS]
+      summary: Get DNS nameservers
+      operationId: getDnsNameservers
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [DNS]
+      summary: Set DNS nameservers
+      operationId: setDnsNameservers
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/dns/preferences:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [DNS]
+      summary: Get DNS preferences
+      operationId: getDnsPreferences
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [DNS]
+      summary: Set DNS preferences
+      operationId: setDnsPreferences
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/dns/searchpaths:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [DNS]
+      summary: Get DNS search paths
+      operationId: getDnsSearchPaths
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [DNS]
+      summary: Set DNS search paths
+      operationId: setDnsSearchPaths
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/acl:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Policy]
+      summary: Get ACL policy file
+      operationId: getAclPolicy
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [Policy]
+      summary: Set ACL policy file
+      operationId: setAclPolicy
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/acl/validate:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    post:
+      tags: [Policy]
+      summary: Validate ACL policy file
+      operationId: validateAclPolicy
+      responses:
+        "200":
+          description: OK
+  /tailnet/{tailnet}/keys:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Keys]
+      summary: List keys
+      operationId: listKeys
+      responses:
+        "200":
+          description: OK
+    post:
+      tags: [Keys]
+      summary: Create key
+      operationId: createKey
+      responses:
+        "201":
+          description: Created
+  /tailnet/{tailnet}/keys/{keyId}:
+    parameters:
+      - name: tailnet
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: keyId
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      tags: [Keys]
+      summary: Get key
+      operationId: getKey
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags: [Keys]
+      summary: Delete key
+      operationId: deleteKey
+      responses:
+        "204":
+          description: Deleted
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Tailscale API access token (prefixed "tskey-api-") passed in the
+        Authorization header. Tokens are created in the admin console with
+        1-90 day expiry, or via OAuth client credentials with scopes.
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Auth with the access token as the username and an empty
+        password.
