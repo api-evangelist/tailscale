@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tailscale REST Devices Logging API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get configuration audit log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/configuration",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get configuration audit log"
+        },
+        {
+          "info": {
+            "name": "Get network flow logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/network",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get network flow logs"
+        },
+        {
+          "info": {
+            "name": "Get log stream configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get log stream configuration"
+        },
+        {
+          "info": {
+            "name": "Set log stream configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set log stream configuration"
+        },
+        {
+          "info": {
+            "name": "Delete log stream configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete log stream configuration"
+        },
+        {
+          "info": {
+            "name": "Get log stream status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/logging/:logType/stream/status",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "logType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get log stream status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

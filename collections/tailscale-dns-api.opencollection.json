@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tailscale REST Devices DNS API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DNS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get DNS nameservers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/nameservers",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DNS nameservers"
+        },
+        {
+          "info": {
+            "name": "Set DNS nameservers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/nameservers",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set DNS nameservers"
+        },
+        {
+          "info": {
+            "name": "Get DNS preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/preferences",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DNS preferences"
+        },
+        {
+          "info": {
+            "name": "Set DNS preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/preferences",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set DNS preferences"
+        },
+        {
+          "info": {
+            "name": "Get DNS search paths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/searchpaths",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get DNS search paths"
+        },
+        {
+          "info": {
+            "name": "Set DNS search paths",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/dns/searchpaths",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set DNS search paths"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

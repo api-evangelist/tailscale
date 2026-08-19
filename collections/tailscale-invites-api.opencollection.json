@@ -1,0 +1,215 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tailscale REST Devices Invites API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List device invites for a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/device-invites",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List device invites for a device"
+        },
+        {
+          "info": {
+            "name": "Create device invite for a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/device-invites",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create device invite for a device"
+        },
+        {
+          "info": {
+            "name": "List tailnet user invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/user-invites",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List tailnet user invites"
+        },
+        {
+          "info": {
+            "name": "Create user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/user-invites",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create user invite"
+        },
+        {
+          "info": {
+            "name": "Get user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/user-invites/:userInviteId",
+            "params": [
+              {
+                "name": "userInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get user invite"
+        },
+        {
+          "info": {
+            "name": "Delete user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/user-invites/:userInviteId",
+            "params": [
+              {
+                "name": "userInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete user invite"
+        },
+        {
+          "info": {
+            "name": "Resend user invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/user-invites/:userInviteId/resend",
+            "params": [
+              {
+                "name": "userInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resend user invite"
+        },
+        {
+          "info": {
+            "name": "Get device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device-invites/:deviceInviteId",
+            "params": [
+              {
+                "name": "deviceInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get device invite"
+        },
+        {
+          "info": {
+            "name": "Delete device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/device-invites/:deviceInviteId",
+            "params": [
+              {
+                "name": "deviceInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete device invite"
+        },
+        {
+          "info": {
+            "name": "Resend device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device-invites/:deviceInviteId/resend",
+            "params": [
+              {
+                "name": "deviceInviteId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resend device invite"
+        },
+        {
+          "info": {
+            "name": "Accept a device invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device-invites/-/accept"
+          },
+          "docs": "Accept a device invite"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

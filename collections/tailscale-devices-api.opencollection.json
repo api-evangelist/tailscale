@@ -1,0 +1,304 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tailscale REST Devices API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices in a tailnet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/devices",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List devices in a tailnet"
+        },
+        {
+          "info": {
+            "name": "List device attributes for a tailnet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/device-attributes",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List device attributes for a tailnet"
+        },
+        {
+          "info": {
+            "name": "Get a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a device"
+        },
+        {
+          "info": {
+            "name": "Delete a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a device"
+        },
+        {
+          "info": {
+            "name": "Expire a device's key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/expire",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Expire a device's key"
+        },
+        {
+          "info": {
+            "name": "Get device routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/routes",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get device routes"
+        },
+        {
+          "info": {
+            "name": "Set device routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/routes",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device routes"
+        },
+        {
+          "info": {
+            "name": "Authorize a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/authorized",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Authorize a device"
+        },
+        {
+          "info": {
+            "name": "Set device name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/name",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device name"
+        },
+        {
+          "info": {
+            "name": "Set device tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/tags",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device tags"
+        },
+        {
+          "info": {
+            "name": "Update device key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/key",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update device key"
+        },
+        {
+          "info": {
+            "name": "Set device IP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/ip",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set device IP"
+        },
+        {
+          "info": {
+            "name": "Get device attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/attributes",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get device attributes"
+        },
+        {
+          "info": {
+            "name": "Set a device attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/attributes/:attributeKey",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attributeKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set a device attribute"
+        },
+        {
+          "info": {
+            "name": "Delete a device attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tailscale.com/api/v2/device/:deviceId/attributes/:attributeKey",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attributeKey",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a device attribute"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

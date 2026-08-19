@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tailscale REST Devices Policy API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ACL policy file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/acl",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get ACL policy file"
+        },
+        {
+          "info": {
+            "name": "Set ACL policy file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/acl",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Set ACL policy file"
+        },
+        {
+          "info": {
+            "name": "Validate ACL policy file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tailscale.com/api/v2/tailnet/:tailnet/acl/validate",
+            "params": [
+              {
+                "name": "tailnet",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Validate ACL policy file"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
