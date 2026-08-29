@@ -1,0 +1,25 @@
+slug: tailscale
+provider: Tailscale
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Policy
+  spec_file: tailscale-policy-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: GET /tailnet/{tailnet}/acl "Get ACL policy file"; POST /tailnet/{tailnet}/acl/validate "Validate
+    ACL policy file"
+  reason: The tag manages the tailnet's ACL policy file, which defines which identities may reach which
+    resources — access control policy authoring, i.e. Identity & Access Management.
