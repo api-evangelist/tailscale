@@ -1,0 +1,24 @@
+# Rate limits transcribed from the provider's own documentation — see provenance. Quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://tailscale.com/blog/kubernetes-operator-1102
+sources:
+- https://tailscale.com/blog/kubernetes-operator-1102
+provenance:
+  tool: planning/api-economics/harvest_ratelimits.py
+  run: 20260920T133210
+  grounding: every limit_text was found verbatim in the fetched page text
+published: true
+note: Blog post about the Tailscale Kubernetes Operator 1.102; the only numeric limit stated is Let's
+  Encrypt's third-party 50-certificate per registered domain per week limit (weekly window not representable
+  in schema enum, so window set to none). No Tailscale API rate limits, no rate-limit response headers
+  other than a mention of Retry-After, and no HTTP status code given.
+limit_count: 1
+limits:
+- name: Let's Encrypt certificates per registered domain
+  limit_text: 50-certificate per registered domain per week limit
+  limit: 50
+  scope: unclear
+  endpoint: Let's Encrypt certificate issuance
+headers:
+- Retry-After
