@@ -10,6 +10,11 @@ provenance:
   grounding: every price_text was found verbatim in the fetched page text
 audience: business-product
 pricing_basis: per-seat
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-09-20'
+  managed_tier: Standard
 published: true
 note: Seat-based SaaS pricing page with free Personal tier, $8 and $18 per-user tiers, custom Enterprise,
   plus add-ons; platform extensions are contact sales.
