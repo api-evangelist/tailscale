@@ -8,6 +8,13 @@ note: ESTIMATES, not quotes. Computed by API Evangelist from the prices this pro
   replace it — publish that and the estimate is retired.
 audience_of_source_pricing: business-product
 pricing_basis: per-seat
+delivery: open-core
+delivery_method: github
+open_source_repository:
+  repo: tailscale/tailscale
+  license: BSD-3-Clause
+  stars: 36687
+delivery_on_pricing_page: managed
 estimate_count: 1
 estimates:
 - kind: entry_cost
