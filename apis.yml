@@ -133,6 +133,8 @@ apis:
   - type: Documentation
     url: https://tailscale.com/api
 common:
+  - type: Plans
+    url: plans/tailscale-plans-pricing.yml
   - type: CapabilityMap
     url: capabilities/tailscale-capability-edges.yml
     name: Tailscale Business Capability Map

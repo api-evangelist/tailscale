@@ -1,0 +1,68 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://tailscale.com/pricing
+sources:
+- https://tailscale.com/pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-seat
+published: true
+note: Seat-based SaaS pricing page with free Personal tier, $8 and $18 per-user tiers, custom Enterprise,
+  plus add-ons; platform extensions are contact sales.
+plan_count: 6
+currency: USD
+plans:
+- name: Personal
+  price_text: $0
+  price: 0
+  currency: USD
+  period: month
+  unit: free forever
+  included_quota: Unlimited user devices; Up to 6 users; Up to 3 ACL groups; Up to 50 tagged resources
+    to start; 1,000 mins per month for ephemeral resources
+- name: Standard
+  price_text: $8
+  price: 8
+  currency: USD
+  period: month
+  unit: Per user, per month
+  included_quota: Everything in Personal, plus unlimited users, SCIM, Up to 10 ACL groups, 1,000 mins
+    per month for ephemeral resources
+- name: Premium
+  price_text: $18
+  price: 18
+  currency: USD
+  period: month
+  unit: Per user, per month
+  included_quota: Everything in Standard, plus Up to 300 ACL groups, 10,000 mins per month for ephemeral
+    resources, priority support
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Everything in Premium, plus custom device quantities and limits, custom MSA & SLAs
+- name: Mullvad add-on
+  price_text: $5
+  price: 5
+  currency: USD
+  period: month
+  unit: Per month for every 5 devices
+- name: Add more tagged resources
+  price_text: $1
+  price: 1
+  currency: USD
+  period: month
+  unit: Per month for every tagged resource
+  included_quota: Scale beyond the 50 tagged resources given free each month
+rate_limit_statements:
+- Up to 6 users
+- Up to 3 ACL groups
+- Up to 50 tagged resources to start
+- 1,000 mins per month for ephemeral resources
+- 10,000 mins per month for ephemeral resources
+- Up to 10 ACL groups
+- Up to 300 ACL groups
+- Basic Tailscale SSH Up to 5 hosts
