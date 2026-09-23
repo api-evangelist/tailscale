@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tailscale REST Devices Invites API
+  title: Tailscale REST Invites API
   description: 'REST API for managing Tailscale tailnets, devices, users, ACL policy, DNS, keys, logging, and user/device invites. Authenticated via HTTP Basic Auth with the API token as the username, Bearer token, or OAuth client credentials with scoped access. Source: https://api.tailscale.com/api/v2 (OpenAPI), https://tailscale.com/api'
   version: '2'
   contact:
