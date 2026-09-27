@@ -10,16 +10,22 @@ description: >-
   OAuth client credentials.
 type: Index
 deliveryModel:
-  model: saas
-  open_source: false
+  model: open-core
+  license: BSD-3-Clause
+  license_evidence:
+    repo: tailscale/tailscale
+    spdx: BSD-3-Clause
+    stars: 36848
+  open_source: true
   commercial: true
   callable_host: true
-  label: Hosted service · you call their endpoint
-  confidence: high
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: medium
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-license
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
