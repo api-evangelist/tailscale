@@ -20,6 +20,7 @@ checked:
 - https://cert.appdefensealliance.org/certifications
 - https://play.google.com/sdks
 - https://search.maven.org/solrsearch/select
+- raycast/integrations/raycast-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -134,6 +135,46 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-network-edge.py
   first_seen: '2026-10-20'
+- partner_name: App Defense Alliance certified products
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://cert.appdefensealliance.org/certifications/10294
+  category: mobile app security certification
+  contract_reference:
+    register: App Defense Alliance certified products (cert.appdefensealliance.org/certifications)
+    standard: ADA Mobile Application Security Profile / OWASP MASVS (MASA)
+    spec_file: null
+    role: ada-certified-developer
+    registered_name: Tailscale
+    register_id: https://cert.appdefensealliance.org/certifications/10294
+    matched_domain: tailscale.com
+    matched_by: domain
+    domain_source: certificate contact e-mail domain
+    certified_products:
+    - product: Mobile application (ADA Mobile App Profile / MASA)
+      product_type: Mobile application (ADA Mobile App Profile / MASA)
+      certifier: App Defense Alliance (authorized lab + certification body)
+      example_product: Tailscale
+      example_certificate: https://cert.appdefensealliance.org/certifications/10294
+      assurance_levels:
+      - AL2
+      newest_expiry: '2027-10-19'
+      lapsed: false
+      lapsed_note: lapsed = no certificate of this type is Valid and unexpired today
+    products_sample:
+    - Tailscale
+    labs:
+    - NowSecure Inc.
+    signal_note: certified_products = ONE entry per ADA product type (profile family), never per app or certificate;
+      labs are assessors (context, never linked)
+    detected_by: sweep-mobile-sdk-index.py
+    detected: '2026-10-21'
+  detected_by: sweep-mobile-sdk-index.py
+  first_seen: '2026-10-21'
 - partner_name: CrowdStrike (own)
   partner: crowdstrike
   partner_match: mirror
@@ -232,45 +273,22 @@ edges:
   category: infrastructure-as-code provider registry listing
   badges:
   - Verified publisher (GitHub domain-verified organization)
-- partner_name: App Defense Alliance certified products
-  partner: null
-  partner_match: register
-  type: register
-  channel: standard-directory
-  relationship: standard-participant
-  direction: partner-built
-  evidence: https://cert.appdefensealliance.org/certifications/10294
-  category: mobile app security certification
-  contract_reference:
-    register: App Defense Alliance certified products (cert.appdefensealliance.org/certifications)
-    standard: ADA Mobile Application Security Profile / OWASP MASVS (MASA)
-    spec_file: null
-    role: ada-certified-developer
-    registered_name: Tailscale
-    register_id: https://cert.appdefensealliance.org/certifications/10294
-    matched_domain: tailscale.com
-    matched_by: domain
-    domain_source: certificate contact e-mail domain
-    certified_products:
-    - product: Mobile application (ADA Mobile App Profile / MASA)
-      product_type: Mobile application (ADA Mobile App Profile / MASA)
-      certifier: App Defense Alliance (authorized lab + certification body)
-      example_product: Tailscale
-      example_certificate: https://cert.appdefensealliance.org/certifications/10294
-      assurance_levels:
-      - AL2
-      newest_expiry: '2027-10-19'
-      lapsed: false
-      lapsed_note: lapsed = no certificate of this type is Valid and unexpired today
-    products_sample:
-    - Tailscale
-    labs:
-    - NowSecure Inc.
-    signal_note: certified_products = ONE entry per ADA product type (profile family), never per app or certificate;
-      labs are assessors (context, never linked)
-    detected_by: sweep-mobile-sdk-index.py
-    detected: '2026-10-21'
-  detected_by: sweep-mobile-sdk-index.py
-  first_seen: '2026-10-21'
+- partner_name: Raycast (raycast-store)
+  partner: raycast
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: raycast-store
+  evidence: https://www.raycast.com/tailscale/tailscale
+  mirror_of: raycast/integrations/raycast-integration-edges.yml
+  apps:
+  - Tailscale
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Raycast Store extension (first-party)
 source:
 - https://github.com/marketplace?type=actions
